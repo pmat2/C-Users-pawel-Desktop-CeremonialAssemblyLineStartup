@@ -12,7 +12,7 @@ class LineStartupTest {
 
     @Test
     void mainAlgorithmAssertionsWithZeroOrGreater(){
-        Assertions.assertAll("Main algorithm",
+        Assertions.assertAll("Main algorithm assertions",
                 () -> Assertions.assertEquals( 1, lineStartup.mainAlgorithm(1,1)),
                 () -> Assertions.assertEquals( 3, lineStartup.mainAlgorithm(5,5)),
                 () -> Assertions.assertEquals(33, lineStartup.mainAlgorithm(1100,1100)),
