@@ -33,6 +33,7 @@ public class LineStartup {
         for (int i = 1; i < numberOfEmployees; i++) {
 //            First PLC always gets switched
             plcList.get(0).switchMode();
+//            Iterate from second plc - first one gets switched above
             for (int j = 1; j < plcList.size(); j++) {
                 if(j % (i+1) == 0){
                     plcList.get(j).switchMode();
