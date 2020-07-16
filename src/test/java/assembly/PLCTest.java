@@ -10,9 +10,10 @@ class PLCTest {
 
     @Test
     void modeChange(){
+//        Initialize
         PLC runModePLC = new PLC(Mode.RUN);
         PLC programModePLC = new PLC(Mode.PROGRAM);
-
+//        Switch modes
         runModePLC.switchMode();
         programModePLC.switchMode();
 

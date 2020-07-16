@@ -9,28 +9,31 @@ import java.util.stream.Stream;
  */
 public class LineStartup {
 
-
 //    First employee places all PLCs into RUN mode
-    private static List<PLC> firstEmployee(int numberOfPLCs){
+    private List<PLC> initialize(int numberOfPLCs){
         return Stream.generate(() -> new PLC(Mode.RUN))
                 .limit(numberOfPLCs)
                 .collect(Collectors.toList());
     }
 
-
-    private static int countRUNs(List<PLC> list){
-        return (int) list.stream()
+    private long countRUNs(List<PLC> list){
+        return list.stream()
                 .filter(c -> c.getMode() == Mode.RUN)
                 .count();
     }
 
-    public int mainAlgorithm(int numberOfPLCs, int numberOfEmployees){
-        final List<PLC> plcList = firstEmployee(numberOfPLCs);
+    public long mainAlgorithm(int numberOfPLCs, int numberOfEmployees){
+        if(numberOfEmployees < 0 || numberOfPLCs < 0){
+            throw new IllegalArgumentException("Number of PLCs and employees has to be 0 or greater!");
+        } else if (numberOfEmployees == 0 || numberOfPLCs == 0){
+            return 0;
+        }
+        final List<PLC> plcList = initialize(numberOfPLCs);
 //        Start from 2nd employee
         for (int i = 1; i < numberOfEmployees; i++) {
 //            First PLC always gets switched
             plcList.get(0).switchMode();
-            for (int j = 0; j < plcList.size(); j++) {
+            for (int j = 1; j < plcList.size(); j++) {
                 if(j % (i+1) == 0){
                     plcList.get(j).switchMode();
                 }

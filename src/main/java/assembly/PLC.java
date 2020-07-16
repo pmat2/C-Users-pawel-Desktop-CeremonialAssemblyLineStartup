@@ -22,4 +22,11 @@ public class PLC {
         }
         else mode = Mode.PROGRAM;
     }
+
+    @Override
+    public String toString() {
+        return "PLC{" +
+                "mode=" + mode +
+                '}';
+    }
 }
