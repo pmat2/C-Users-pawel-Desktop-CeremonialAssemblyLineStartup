@@ -22,12 +22,18 @@ public class LineStartup {
                 .count();
     }
 
+    private boolean checkForNegativeArguments(int PLCs, int employees) {
+        return PLCs < 0 || employees < 0;
+    }
+
+    private boolean checkForZeroArguments(int PLCs, int employees){
+        return PLCs == 0 || employees == 0;
+    }
+
     public long mainAlgorithm(int numberOfPLCs, int numberOfEmployees){
-        if(numberOfEmployees < 0 || numberOfPLCs < 0){
-            throw new IllegalArgumentException("Number of PLCs and employees has to be 0 or greater!");
-        } else if (numberOfEmployees == 0 || numberOfPLCs == 0){
-            return 0;
-        }
+        if(checkForNegativeArguments(numberOfPLCs, numberOfEmployees)){throw new IllegalArgumentException("Number of PLCs and employees has to be 0 or greater!");}
+        if(checkForZeroArguments(numberOfPLCs, numberOfEmployees)){return 0;}
+
         final List<PLC> plcList = initialize(numberOfPLCs);
 //        Start from 2nd employee
         for (int i = 1; i < numberOfEmployees; i++) {
