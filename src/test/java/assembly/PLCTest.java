@@ -18,7 +18,7 @@ class PLCTest {
         programModePLC.switchMode();
 
         Assertions.assertAll("PLC mode assertions",
-                () -> Assertions.assertEquals(runModePLC.getMode(), Mode.PROGRAM),
-                () -> Assertions.assertEquals(programModePLC.getMode(), Mode.RUN));
+                () -> Assertions.assertEquals(Mode.PROGRAM, runModePLC.getMode()),
+                () -> Assertions.assertEquals(Mode.RUN, programModePLC.getMode()));
     }
 }
