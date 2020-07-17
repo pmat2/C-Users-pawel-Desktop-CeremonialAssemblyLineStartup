@@ -14,5 +14,11 @@ public class Main {
                 numberOfEmployees +  " employees assembly line startup will have " +
                 lineStartup.mainAlgorithm(numberOfPLCs, numberOfEmployees) +
                 " PLCs in Run mode.");
+
+        System.out.println("\n~~Alternative solution~~\n" +
+                "For " + numberOfPLCs +  " PLCs and " +
+                numberOfEmployees +  " employees assembly line startup will have " +
+                lineStartup.alternativeAlgorithm(numberOfPLCs, numberOfEmployees) +
+                " PLCs in Run mode.");
     }
 }

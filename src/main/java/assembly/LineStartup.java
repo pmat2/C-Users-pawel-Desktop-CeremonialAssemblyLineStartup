@@ -48,4 +48,22 @@ public class LineStartup {
         }
         return countRUNs(plcList);
     }
+
+//    Alternative solution
+    public long alternativeAlgorithm(int numberOfPLCs, int numberOfEmployees){
+        if(checkForNegativeArguments(numberOfPLCs, numberOfEmployees)){throw new IllegalArgumentException("Number of PLCs and employees has to be 0 or greater!");}
+        if(checkForZeroArguments(numberOfPLCs, numberOfEmployees)){return 0;}
+
+        final List<PLC> plcList = initialize(numberOfPLCs);
+//        Start from 2nd employee
+        for (int i = 1; i < numberOfEmployees; i++) {
+//            Iterate from second plc
+            for (int j = 1; j < plcList.size(); j++) {
+                if((j+1) % (i+1) == 0){
+                    plcList.get(j).switchMode();
+                }
+            }
+        }
+        return countRUNs(plcList);
+    }
 }
